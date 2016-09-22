@@ -4,8 +4,34 @@ window.addEventListener("load", function(){
 		var usuario = document.getElementById("usuario").value.trim();
 		var correo = document.getElementById("email").value.trim();
 		var contrasenia = document.getElementById("password").value.trim();
-		var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
+//validacion de usuario
+		var tieneLetra = false;
+		var tieneNumero = false;
+
+		for (var i = 0; i < usuario.length; i++) {
+			var caracterEvaluar = usuario[i];
+			var valorNumerico = parseInt(caracterEvaluar);
+			//var esNumero = !isNaN(valorNumerico);
+			if (isNaN(valorNumerico)) {
+				//es letra
+				tieneLetra = true;
+			}else{
+				//es numero
+				tieneNumero = true;
+
+			}
+		
+		}
+
+		if (tieneLetra && tieneNumero) {
+
+		}else{
+			alert("validar que tenga una combinación de letras y números");
+		}
+
+
+		return false;
 		if (usuario.length < 8) {
 			alert ("Ingrese caracteres para usuario valido");
 		}
@@ -13,17 +39,22 @@ window.addEventListener("load", function(){
 			alert ("La primera letra de su usuario debe estar en mayúscula");
 		}
 
-		for (var i = 0; i < usuario.length; i++) {
-			if (isNaN(parseInt(usuario[i]))){
-				alert ("Congelado");
-			}
+
+//validacion de correo
+		var posicionA = correo.indexOf("@");
+		var posicionP = correo.lastIndexOf(".");
+
+		if (posicionA > 1 && posicionA + 1 < posicionP  && posicionP < correo.length - 2) {
+
+		} else { 
+			alert("Correo Invalido");
 		}
 
-		if ( !expr.test(correo)) {
-			alert ("Ingresar email correcto");
-		}
+
+
+//validacion de contraseña
 		if (contrasenia.length < 6) {
-			alert ("Ingrese mínimo 6 caracteres");
+			alert("Ingrese mínimo 6 caracteres");
 		}
 		if (contrasenia === "contraseña") {
 			alert ("Ingrese contraseña correcta"); 

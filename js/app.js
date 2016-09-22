@@ -13,13 +13,13 @@ window.addEventListener("load", function(){
 			alert ("La primera letra de su usuario debe estar en mayúscula");
 		}
 
-		/*for (var i = 0; i < usuario.length; i++) {
-			if(isNaN(parseInt(usuario[i])) || !isNaN(parseInt(usuario[i]))){
-				
-
+		for (var i = 0; i < usuario.length; i++) {
+			if (isNaN(parseInt(usuario[i]))){
+				alert ("Congelado");
 			}
-		}*/
-		if (expr.test(correo))) {
+		}
+
+		if ( !expr.test(correo)) {
 			alert ("Ingresar email correcto");
 		}
 		if (contrasenia.length < 6) {
